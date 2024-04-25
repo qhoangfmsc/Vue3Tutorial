@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- #2 -->
+    <!-- <section id="app"></section> -->
+
+    <!-- #3 -->
+    <section id="app">
+      <!-- #3.2 -->
+      <input class="input" type="number" step="10" v-model="filterValue" />
+      <div class="card-container">
+        <!-- #3.1 -->
+        <!-- <div class="card" @mouseover="onMouseOver">onMouseOver</div>
+        <div class="card" @mouseleave="onMouseLeave">onMouseLeave</div>
+        <div class="card" @dblclick="onDoubleClick($event, 150, 100)">
+          onDoubleClick
+        </div>
+        <div class="card" @mousemove="onMouseMove">onMouseMove {{x}} {{y}}</div> -->
+
+        <!-- #3.2 -->
+        <div
+          class="card"
+          v-for="box in filteredBoxes"
+          :class="{ picked: box.isPicked }"
+          @click="initBoxClick($event, box)"
+        >
+          <img
+            v-bind:src="box.thumbnail"
+            class="card-thumbnail"
+            width="100px"
+          />
+          <h3 :style="{ margin: 0}">{{box.name}}</h3>
+          <p>Size: {{box.size}}</p>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+    <style>
+      /* #3 */
+      .card-container {
+        display: flex;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        margin: 30px;
+        background-color: #dedede;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: scale(1.1);
+      }
+      .card-thumbnail {
+        border-radius: 10px;
+      }
+      .card.picked {
+        color: rgb(218, 247, 255);
+        background-color: cornflowerblue;
+      }
+      .input {
+        padding: 0.5rem;
+        margin-left: 2rem;
+      }
+    </style>
+  </body>
+</html>
