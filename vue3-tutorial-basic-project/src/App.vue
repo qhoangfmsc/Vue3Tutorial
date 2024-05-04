@@ -1,29 +1,50 @@
 <template>
   <header-app class="fade" ref="header" />
-  <modal-app
+  <!-- <modal-app
     v-if="isShowModal"
     ref="modal"
     title="Modal header title"
     theme="brown"
     @cancel="onActive"
-  />
+  /> -->
+  <teleport to="body">
+    <customed-modal-app
+      v-if="isShowModal"
+      ref="modal"
+      title="Modal header title"
+      theme="white"
+      @cancel="onActive"
+    >
+      <template v-slot:header> HelloWorld Header </template>
+      <template v-slot:footer>
+        <!-- EVENT MODIFIERS -->
+        <button @click.enter="onActive">OK</button>
+      </template>
+      <main>
+        <label>Name</label>
+        <input type="text" />
+      </main>
+    </customed-modal-app>
+  </teleport>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld ref="hello" msg="Welcome to Your Vue.js App" />
   <button @click="onChange">Change me</button>
-  <button @click="onActive">Active Modal</button>
+  <button @click.space="onActive">Active Modal</button>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
-import ModalComponent from "./components/ModalComponent.vue";
+// import ModalComponent from "./components/ModalComponent.vue";
+import CustomedModalComponent from "./components/CustomedModalComponent.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
     HeaderApp: HeaderComponent,
-    ModalApp: ModalComponent,
+    // ModalApp: ModalComponent,
+    CustomedModalApp: CustomedModalComponent,
   },
   data() {
     return {
