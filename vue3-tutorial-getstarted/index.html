@@ -12,7 +12,17 @@
     <!-- #3 -->
     <section id="app">
       <!-- #3.2 -->
-      <input class="input" type="number" step="10" v-model="filterValue" />
+      <div class="filter">
+        <h3>Choose size number to filter boxes:</h3>
+        <input
+          class="input"
+          type="number"
+          step="10"
+          min="0"
+          max="100"
+          v-model="filterValue"
+        />
+      </div>
       <div class="card-container">
         <!-- #3.1 -->
         <!-- <div class="card" @mouseover="onMouseOver">onMouseOver</div>
@@ -69,9 +79,11 @@
         color: rgb(218, 247, 255);
         background-color: cornflowerblue;
       }
+      .filter {
+        margin-left: 2rem;
+      }
       .input {
         padding: 0.5rem;
-        margin-left: 2rem;
       }
     </style>
   </body>
