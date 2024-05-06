@@ -1,0 +1,18 @@
+/* Variable Css */
+:root {
+  --dark: #212121;
+  --light: #f3f3f3;
+  --font: "Odibee Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark);
+}
